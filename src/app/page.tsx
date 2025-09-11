@@ -1,3 +1,4 @@
+import ClientLogos from "@/components/home/ClientLogos";
 import CtaSection from "@/components/home/CtaSection";
 import HeroSection from "@/components/home/HeroSection";
 import InfluencerGrid from "@/components/home/InfluencerGrid";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <CtaSection/>
       <InfluencerGrid/>
       <PackageSection/>
+      <ClientLogos/>
     </main>
   );
 }
