@@ -16,7 +16,7 @@ const categories = [
 const HeroSection = () => {
 
     return (
-        <section className="bg-gray-50 pt-6 pb-12 md:pt-10 md:pb-20">
+        <section className="bg-gray-100 pt-6 pb-12 md:pt-10 md:pb-20">
             <div className="container mx-auto px-4">
                 <HeroCarousel/>
 

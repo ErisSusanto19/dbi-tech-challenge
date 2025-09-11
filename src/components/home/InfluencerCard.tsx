@@ -7,13 +7,15 @@ const InfluencerCard = ({ influencer }: { influencer: Influencer}) => {
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden group">
             <div className="relative w-full aspect-[4/5] bg-gray-200">
-                <Image
-                    src={influencer.imageUrl}
-                    alt={influencer.name}
-                    fill
-                    style={{objectFit: "cover"}}
-                    className="group-hover:scale-105 transition-transform duration-300"
-                />
+                <Link href={`https://app.dapurbuzzer.co.id/influencer/${influencer.instagramHandle}`} className="block w-full h-full">
+                    <Image
+                        src={influencer.imageUrl}
+                        alt={influencer.name}
+                        fill
+                        style={{objectFit: "cover"}}
+                        className="group-hover:scale-105 transition-transform duration-300"
+                    />
+                </Link>
             </div>
 
             <div className="p-4">

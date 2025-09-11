@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CtaSection = () => {
     return (
-        <section className="bg-gray-50">
+        <section className="bg-gray-100">
             <div className="container mx-auto px-4 py-16 md:py-14">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -26,7 +26,7 @@ const CtaSection = () => {
                         <Link
                             href="https://dapurbuzzer.co.id/join/"
                             target="_blank"
-                            className="flex items-center justify-center w-full bg-white hover:bg-gray-200 text-[#7124a8] font-bold py-3 px-8 rounded-md border border-[#7124a8] transition-transform transform hover:scale-105"
+                            className="flex items-center justify-center w-full bg-white hover:bg-[#ceb9fc] text-[#7124a8] font-bold py-3 px-8 rounded-md border border-[#7124a8] transition-transform transform hover:scale-105"
                         >
                             <Handshake size={20} className="mr-2"/>
                             <span>Gabung bersama Kami</span>
