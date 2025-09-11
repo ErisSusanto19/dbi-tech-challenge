@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { FileText, HelpCircle, Home, Info, Megaphone, Menu, Package, UserPlus, Users, X } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -11,15 +11,15 @@ const Navbar = () => {
     const pathname = usePathname()
 
     const menuItems = [
-        { name: "Home", path: "/"},
-        { name: "About", path: "/about"},
-        { name: "Influencer", path: "/influencer"},
-        { name: "Campaign", path: "/campaign"},
-        { name: "Package", path: "/package"},
-        { name: "Join Influencer", path: "/join"},
-        { name: "Terms & Conditions", path: "/term-and-condition"},
-        { name: "FAQ", path: "/faq"},
-    ]
+        { name: "Home", icon: Home, path: "/" },
+        { name: "About", icon: Info, path: "/about" },
+        { name: "Influencer", icon: Users, path: "/influencer" },
+        { name: "Campaign", icon: Megaphone, path: "/campaign" },
+        { name: "Package", icon: Package, path: "/package" },
+        { name: "Join Influencer", icon: UserPlus, path: "/join" },
+        { name: "Terms & Conditions", icon: FileText, path: "/term-and-condition" },
+        { name: "FAQ", icon: HelpCircle, path: "/faq" },
+    ];
 
     return (
         <header className="bg-white shadow-md sticky top-0 z-50">
@@ -80,16 +80,27 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="lg:hidden bg-white border-t border-gray-200">
                     <nav className="flex flex-col p-4 space-y-2">
-                        {menuItems.map(item => (
-                            <Link
-                                key={item.name}
-                                href={item.path}
-                                className="text-gray-600 hover:text-[#7124a8] p-2 rounded-md hover:bg-gray-100 transition-colors"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
+                        {menuItems.map((item, index) => {
+                            const isActive = pathname === item.path
+                            const Icon = item.icon
+                            return (
+                                <Link
+                                    key={index}
+                                    href={item.path}
+                                    className={`
+                                         flex items-center hover:text-[#7124a8] p-2 rounded-md hover:bg-gray-100 transition-colors
+                                        ${isActive
+                                            ? 'text-[#7124a8] font-semibold border-b-2 border-[#7124a8] bg-gray-100'
+                                            : 'text-gray-600'
+                                        }
+                                    `}
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    <Icon className="mr-2"/>
+                                    {item.name}
+                                </Link>
+                            )
+                        })}
                     </nav>
                 </div>
             )}
