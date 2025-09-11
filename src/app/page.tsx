@@ -1,7 +1,9 @@
+import HeroSection from "@/components/home/HeroSection";
+
 export default function HomePage() {
   return (
     <main>
-      <h1>BDI Tech Challenge</h1>
+      <HeroSection/>
     </main>
   );
 }

@@ -25,7 +25,7 @@ const Navbar = () => {
                 <div className="flex justify-center items-center space-x-4">
                     <Link href="/" className="flex-shrink-0">
                         <Image
-                            src="/logo-color.png"
+                            src="/images/logo-color.png"
                             alt="DBI Tech Logo"
                             width={80}
                             height={30}
@@ -42,12 +42,12 @@ const Navbar = () => {
                 </div>
 
                 <nav className="hidden lg:flex items-center space-x-4">
-                    {menuItems.map(item => (
+                    {menuItems.map((item, index) => (
                         <Link
-                            key={item.name}
+                            key={index}
                             href={item.path}
                             className={`
-                                text-gray-600 hover:text-[#7124a8] transition-colors whitespace-nowrap px-1
+                                text-gray-600 hover:text-[#7124a8] hover:font-medium transition-colors whitespace-nowrap px-1
                             `}
                         >
                             {item.name}
