@@ -88,15 +88,16 @@ const Navbar = () => {
                                     key={index}
                                     href={item.path}
                                     className={`
-                                         flex items-center hover:text-[#7124a8] p-2 rounded-md hover:bg-gray-100 transition-colors
+                                        flex items-center gap-3 p-3 rounded-md text-base
+                                        transition-colors
                                         ${isActive
-                                            ? 'text-[#7124a8] font-semibold border-b-2 border-[#7124a8] bg-gray-100'
+                                            ? 'bg-[#f3eef9] text-[#7124a8] font-semibold'
                                             : 'text-gray-600'
                                         }
                                     `}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    <Icon className="mr-2"/>
+                                    <Icon className="w-5 h-5 flex-shrink-0"/>
                                     {item.name}
                                 </Link>
                             )
