@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname()
 
     const menuItems = [
         { name: "Home", path: "/"},
@@ -42,17 +44,25 @@ const Navbar = () => {
                 </div>
 
                 <nav className="hidden lg:flex items-center space-x-4">
-                    {menuItems.map((item, index) => (
-                        <Link
-                            key={index}
-                            href={item.path}
-                            className={`
-                                text-gray-600 hover:text-[#7124a8] hover:font-medium transition-colors whitespace-nowrap px-1
-                            `}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
+                    {menuItems.map((item, index) => {
+                        const isActive = pathname === item.path;
+                        return (
+                            <Link
+                                key={index}
+                                href={item.path}
+                                className={`
+                                    transition-colors whitespace-nowrap px-1 py-2
+                                    hover:text-[#7124a8]
+                                    ${isActive 
+                                        ? 'text-[#7124a8] font-semibold border-b-2 border-[#7124a8]'
+                                        : 'text-gray-600'
+                                    }
+                                `}
+                            >
+                                {item.name}
+                            </Link>
+                        )
+                    })}
                 </nav>
 
                 <div className="lg:hidden">

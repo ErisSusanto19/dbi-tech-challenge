@@ -14,8 +14,8 @@ const banners = [
     {src: "/images/banner5.png", alt: "Banner 5"},
 ]
 const HeroCarousel = () => {
-    const[emblaRef, emblaApi] = useEmblaCarousel({loop: true}, [Autoplay()])
-    const[selectedIndex, setSelectedIndex] = useState(0)
+    const [emblaRef, emblaApi] = useEmblaCarousel({loop: true}, [Autoplay()])
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
     const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
