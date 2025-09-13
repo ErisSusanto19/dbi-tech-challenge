@@ -70,7 +70,7 @@ const PackageSection = () => {
                             </p>
 
                             <div className="my-6 flex items-baseline flex-wrap">
-                                <span className="text-4xl font-extrabold break-all">
+                                <span className="text-4xl font-bold break-all">
                                     {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0}).format(pkg.price)}
                                 </span>
                                 <span className={`ml-2 ${pkg.isFeatured? 'text-gray-300' : 'text-gray-500'}`}>/paket</span>

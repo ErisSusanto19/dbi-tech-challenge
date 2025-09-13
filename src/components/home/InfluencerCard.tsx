@@ -1,19 +1,20 @@
 import { Influencer } from "@/types"
 import { Instagram, User } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
+import SafeImage from "../ui/SafeImage"
 
 const InfluencerCard = ({ influencer }: { influencer: Influencer}) => {
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden group">
             <div className="relative w-full aspect-[4/5] bg-gray-200">
                 <Link href={`https://app.dapurbuzzer.co.id/influencer/${influencer.instagramHandle}`} className="block w-full h-full">
-                    <Image
+                    <SafeImage
                         src={influencer.imageUrl}
                         alt={influencer.name}
                         fill
                         style={{objectFit: "cover"}}
                         className="group-hover:scale-105 transition-transform duration-300"
+                        fallbackIconSize={64}
                     />
                 </Link>
             </div>

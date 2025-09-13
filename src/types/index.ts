@@ -7,3 +7,11 @@ export interface Influencer {
     followers: string;
     bookingUrl: string;
 }
+
+export interface Testimonial {
+    name: string,
+    role: string;
+    imageUrl: string;
+    rating: number;
+    testimonial: string;
+}

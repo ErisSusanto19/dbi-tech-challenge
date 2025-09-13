@@ -27,7 +27,7 @@ const ClientLogos = () => {
                                 alt={`${client.name} logo`}
                                 width={client.width}
                                 height={client.height}
-                                className="opacity-80 hover:opacity-100 transition-all duration-300 transform hover:scale-110"
+                                className="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 transform hover:scale-110"
                             />
                         </div>
                     ))}
