@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +12,9 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "DBI Tech Challenge | Eris Susanto",
   description: "Submission untuk tech challenge DBI yang mencakup redesign, CRUD, dan integrasi API.",
+  icons: {
+    icon: "https://dapurbuzzer.co.id/assets/img/faviconblue.png",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +27,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} antialiased`}
       >
-        {children}
+        <Navbar/>
+        <main>
+          {children}
+        </main>
+        <Footer/>
       </body>
     </html>
   );
