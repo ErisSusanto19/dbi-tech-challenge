@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FileText, HelpCircle, Home, Info, Megaphone, Menu, Package, UserPlus, Users, X } from "lucide-react";
+import { FileText, HelpCircle, Home, Info, Megaphone, Menu, Package, Search, UserPlus, Users, X } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -35,10 +35,14 @@ const Navbar = () => {
                         />
                     </Link>
                     <div className="relative hidden sm:block">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <Search className="h-4 w-4 text-gray-400" />
+                        </span>
                         <input
                             type="text"
                             placeholder="Search..."
-                            className="border border-[#ceb9fc] rounded-md py-1 px-2 w-32 lg:w-40 xl:w-48 focus:border-[#7124a8] focus:ring-1 focus:ring-[#7124a8] focus:outline-none transition-all duration-300"
+                            autoComplete="off"
+                            className="border border-[#ceb9fc] rounded-md py-1 pl-10 pr-4 w-32 lg:w-40 xl:w-48 focus:border-[#7124a8] focus:ring-1 focus:ring-[#7124a8] focus:outline-none transition-all duration-300"
                         />
                     </div>
                 </div>

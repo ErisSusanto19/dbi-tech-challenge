@@ -1,5 +1,6 @@
 import { Influencer } from "@/types"
-import { Instagram, User } from "lucide-react"
+import { User } from "lucide-react"
+import { SiInstagram } from "react-icons/si"
 import Link from "next/link"
 import SafeImage from "../ui/SafeImage"
 
@@ -22,7 +23,7 @@ const InfluencerCard = ({ influencer }: { influencer: Influencer}) => {
             <div className="p-4">
                 <h3 className="font-bold text-lg text-gray-800 truncate">{influencer.name}</h3>
                 <div className="flex items-center space-x-2 text-sm text-gray-500 mt-1">
-                    <Instagram size={14}/>
+                    <SiInstagram size={14}/>
                     <Link href={influencer.instagramUrl} target="_blank" className="hover:underline">
                         @{influencer.instagramHandle}
                     </Link>

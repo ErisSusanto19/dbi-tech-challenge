@@ -14,7 +14,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "app.dapurbuzzer.co.id",
         port: "",
-        pathname: "/images/klien/**"
+        pathname: "/images/**"
+      },
+      {
+        protocol: "https",
+        hostname: "dapurbuzzer.co.id",
+        port: "",
+        pathname: "/assets/img/**"
       }
     ]
   }

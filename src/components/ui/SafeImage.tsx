@@ -5,7 +5,7 @@ import Image, { ImageProps } from "next/image";
 import { useState } from "react";
 
 interface SafeImageProps extends ImageProps {
-    fallbackIconSize: number;
+    fallbackIconSize?: number;
 }
 
 const SafeImage = ({ src, alt, fallbackIconSize= 48, ...props }: SafeImageProps) => {

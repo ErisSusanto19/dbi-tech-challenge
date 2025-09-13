@@ -54,8 +54,7 @@ const recommendedInfluencers = [
     },
     {
         "id": 6,
-        // "imageUrl": "https://app.dapurbuzzer.co.id/storage/avatar/KBU6wpkegqTcx1ZyaEKOFoFv4YFp0m4rOMgisQVI.jpeg",
-        "imageUrl": "https://app.dapurbuzzer.co.id/storage/avatar/KBU6wpkegqTcx1ZyaEKOFoFv4YFp0m4rOMgisQVI.jp",
+        "imageUrl": "https://app.dapurbuzzer.co.id/storage/avatar/KBU6wpkegqTcx1ZyaEKOFoFv4YFp0m4rOMgisQVI.jpeg",
         "name": "Daiva Naflah Nurizka",
         "instagramHandle": "deivaann",
         "instagramUrl": "https://instagram.com/deivaann",
