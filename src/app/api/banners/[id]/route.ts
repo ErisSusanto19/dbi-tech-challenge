@@ -2,13 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary";
 
-interface Params {
-    params: {
-        id: string;
-    }
-}
-
-export async function PUT(request: Request, { params }: Params) {
+export async function PUT(request: Request, { params }: { params: { id: string }}) {
     try {
         const { id } = params
         const body = await request.json()
@@ -56,7 +50,7 @@ const getPublicIdFromUrl = (url: string): string | null => {
     return match ? match[1] : null;
 }
 
-export async function DELETE(request: Request, {params}: Params) {
+export async function DELETE(request: Request, {params}: { params: { id: string }}) {
     try {
         const { id } = params
 
