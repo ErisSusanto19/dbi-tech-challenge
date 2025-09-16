@@ -98,14 +98,14 @@ const RecommendedInfluencers = () => {
                         <button
                             onClick={scrollPrev}
                             disabled={!canScrollPrev}
-                            className={`p-2 rounded-full bg-gray-100 ${canScrollPrev? 'hover:bg-gray-200 shadow-md' : ''} disabled:opacity-50`}
+                            className={`p-2 rounded-full bg-gray-100 ${canScrollPrev? 'hover:bg-gray-200 shadow-md cursor-pointer' : ''} disabled:opacity-50`}
                         >
                             <ChevronLeft size={20}/>
                         </button>
                         <button
                             onClick={scrollNext}
                             disabled={!canScrollNext}
-                            className={`p-2 rounded-full bg-gray-100 ${canScrollNext? 'hover:bg-gray-200 shadow-md' : ''} disabled:opacity-50`}
+                            className={`p-2 rounded-full bg-gray-100 ${canScrollNext? 'hover:bg-gray-200 shadow-md cursor-pointer' : ''} disabled:opacity-50`}
                         >
                             <ChevronRight size={20}/>
                         </button>

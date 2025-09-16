@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Plane, Smile, Dumbbell, Headphones, SquarePlay, LayoutGrid, Utensils, Sparkles } from 'lucide-react';
 import HeroCarousel from './HeroCarousel';
+import { Banner } from '@prisma/client';
 
 const categories = [
     { name: "Travel & Lifestyle", icon: Plane, path: "/travel-and-lifestyle"},
@@ -13,12 +14,35 @@ const categories = [
     { name: "Lainnya", icon: LayoutGrid, path: "/youtuber"},
 ]
 
-const HeroSection = () => {
+async function getActiveBanners(): Promise<Banner[]> {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+        const response = await fetch(`${baseUrl}/api/banners`, {
+            cache: 'no-store', 
+        });
+        
+        if (!response.ok) {
+            console.error("Failed to fetch banners:", response.statusText);
+            return [];
+        }
+
+        const data = await response.json()
+
+        return data;
+    } catch (error) {
+        console.error("Error in getActiveBanners:", error);
+        return [];
+    }
+}
+
+const HeroSection = async () => {
+
+    const activeBanners = await getActiveBanners();
 
     return (
         <section className="bg-gray-100 pt-6 pb-12 md:pt-10 md:pb-20">
             <div className="container mx-auto px-4">
-                <HeroCarousel/>
+                <HeroCarousel banners={activeBanners}/>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
                     {categories.map((category, index) => {

@@ -1,19 +1,14 @@
 'use client';
 
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Banner } from '@prisma/client';
+import SafeImage from "../ui/SafeImage";
+import Link from "next/link";
 
-const banners = [
-    {src: "/images/banner1.png", alt: "Banner 1"},
-    {src: "/images/banner2.png", alt: "Banner 2"},
-    {src: "/images/banner3.png", alt: "Banner 3"},
-    {src: "/images/banner4.png", alt: "Banner 4"},
-    {src: "/images/banner5.png", alt: "Banner 5"},
-]
-const HeroCarousel = () => {
+const HeroCarousel = ({banners}: {banners: Banner[]}) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({loop: true}, [Autoplay()])
     const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -32,22 +27,59 @@ const HeroCarousel = () => {
         return () => { emblaApi.off("select", onSelect) }
     }, [emblaApi])
 
+    if (!banners || banners.length === 0) {
+        return (
+            <div className="relative w-full aspect-[3/2] max-h-[500px] bg-gray-200 rounded-lg flex items-center justify-center">
+                <p className="text-gray-500">No active banners available.</p>
+            </div>
+        );
+    }
+
+    const renderSlide = (banner: Banner, index: number) => {
+        return (
+            <div className="relative w-full aspect-[3/2] max-h-[500px] bg-gradient-to-r from-[#7124a8]/90 via-black to-[#7124a8]/90 group">
+                <SafeImage
+                    src={banner.imageUrl}
+                    alt={banner.title || 'Promotional Banner'}
+                    fill
+                    style={{objectFit: "contain"}}
+                    priority={index === 0}
+                    sizes="100vw"
+                />
+
+                <div className={`
+                        absolute inset-0 flex flex-col items-start justify-end p-6 
+                        bg-gradient-to-t from-black/50 to-transparent
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none
+                    `}
+                >
+                    {banner.title && (
+                        <h2 className="text-white text-2xl font-bold drop-shadow-lg mb-2">
+                            {banner.title}
+                        </h2>
+                    )}
+
+                    {banner.ctaLink && (
+                        <Link 
+                            href={banner.ctaLink} 
+                            className="bg-[#7124a8] hover:bg-[#5f1d8f] text-white font-semibold py-2 px-4 rounded-md text-sm
+                                    transition-transform transform hover:scale-105"
+                        >
+                            Selengkapnya
+                        </Link>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="relative">
             <div className="overflow-hidden rounded-lg shadow-lg mb-8" ref={emblaRef}>
                 <div className="flex">
-                    {banners.map((item, index) => (
+                    {banners.map((banner, index) => (
                         <div className="flex-grow-0 flex-shrink-0 w-full" key={index}>
-                            <div className="relative w-full aspect-[3/2] max-h-[500px] bg-gradient-to-r from-[#7124a8]/90 via-black to-[#7124a8]/90">
-                                <Image
-                                    src={item.src}
-                                    alt={item.alt}
-                                    fill
-                                    style={{objectFit: "contain"}}
-                                    priority={index === 0}
-                                    sizes="100vw"
-                                />
-                            </div>
+                            {renderSlide(banner, index)}
                         </div>
                     ))}
                 </div>
@@ -55,14 +87,14 @@ const HeroCarousel = () => {
 
             <button
                 onClick={scrollPrev}
-                className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-lg shadow-md z-10"
+                className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-lg shadow-md z-10 cursor-pointer"
             >
                 <ChevronLeft/>
             </button>
 
             <button
                 onClick={scrollNext}
-                className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-lg shadow-md z-10"
+                className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-lg shadow-md z-10 cursor-pointer"
             >
                 <ChevronRight/>
             </button>
