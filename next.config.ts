@@ -21,7 +21,13 @@ const nextConfig: NextConfig = {
         hostname: "dapurbuzzer.co.id",
         port: "",
         pathname: "/assets/img/**"
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: `/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/**`,
+      },
     ]
   }
 };
