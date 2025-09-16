@@ -6,6 +6,7 @@ import SafeImage from "@/components/ui/SafeImage";
 import ConfirmDeleteModal from "@/components/admin/ConfirmDeleteModal";
 import EditBannerModal, { FormData as EditFormData } from "@/components/admin/EditBannerModal";
 import { AlertTriangle, Loader2 } from "lucide-react";
+import AdminSkeleton from "@/components/admin/AdminSkeleton";
 
 const AdminBannersPage = () => {
     const [banners, setBanners] = useState<Banner[]>([])
@@ -221,8 +222,23 @@ const AdminBannersPage = () => {
     const activeBannersCount = banners.filter(b => b.isActive).length;
     const BANNER_LIMIT = 5;
 
-    if(isLoading) return <div>Loading...</div>
-    if(error) return <div>Error: {error}</div>
+    if(isLoading) return <AdminSkeleton />;
+    if(error) {
+         return (
+            <main className="container mx-auto px-4 py-8">
+                <div className="p-6 bg-red-50 border border-red-200 text-red-800 rounded-lg">
+                    <h2 className="font-bold text-lg mb-2">Failed to Load Data</h2>
+                    <p>{error}</p>
+                    <button 
+                        onClick={() => fetchBanners()} 
+                        className="mt-4 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <>
