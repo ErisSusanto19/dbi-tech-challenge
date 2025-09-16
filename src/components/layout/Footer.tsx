@@ -44,6 +44,7 @@ const Footer = () => {
                             <li><Link href="/term-and-condition" className="text-gray-400 hover:text-white">Terms & Conditions</Link></li>
                             <li><Link href="/contact" className="text-gray-400 hover:text-white">Hubungi Kami</Link></li>
                             <li><Link href="/admin/banners" className="text-gray-400 hover:text-blue-400">Admin Panel</Link></li>
+                            <li><Link href="/tools/instagram-checker" className="text-gray-400 hover:text-blue-400">Instagram Checker</Link></li>
                         </ul>
                     </div>
 
