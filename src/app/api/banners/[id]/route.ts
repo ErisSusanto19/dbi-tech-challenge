@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary";
 
-export async function PUT(request: Request, { params }: { params: { id: string }}) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string }}) {
     try {
         const { id } = params
         const body = await request.json()
@@ -50,7 +50,7 @@ const getPublicIdFromUrl = (url: string): string | null => {
     return match ? match[1] : null;
 }
 
-export async function DELETE(request: Request, {params}: { params: { id: string }}) {
+export async function DELETE(request: NextRequest, {params}: { params: { id: string }}) {
     try {
         const { id } = params
 

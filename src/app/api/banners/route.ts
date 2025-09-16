@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(_request: Request) {
+export async function GET(_request: NextRequest) {
     try {
         const banners = await prisma.banner.findMany({
             take: 5,
@@ -24,7 +24,7 @@ export async function GET(_request: Request) {
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
         const { imageUrl, title, ctaLink, isActive } = body
