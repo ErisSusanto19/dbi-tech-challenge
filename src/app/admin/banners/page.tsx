@@ -57,8 +57,12 @@ const AdminBannersPage = () => {
             const data = await response.json()
             setBanners(data)
             
-        } catch (error: any) {
-            setError(error)
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsLoading(false)
         }

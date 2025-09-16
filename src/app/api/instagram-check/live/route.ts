@@ -27,8 +27,8 @@ export async function GET(request: Request) {
         const data = await response.json();
         return NextResponse.json(data);
 
-    } catch (error: any) {
+    } catch (error) {
         console.error("Error in proxy API:", error);
-        return NextResponse.json({ message: `Failed to fetch data: ${error.message}` }, { status: 502 }); // 502 Bad Gateway
+        return NextResponse.json({ message: `Failed to fetch data: ${error instanceof Error? error.message : 'An unexpected error occurred.'}` }, { status: 502 }); // 502 Bad Gateway
     }
 }

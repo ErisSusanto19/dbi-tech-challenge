@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Switch } from '@headlessui/react';
+import { InstagramApiResponse } from '@/types';
 
 const StatusBadge = ({ status, onText, offText }: { status: boolean, onText: string, offText: string }) => {
     const isOff = status === false;
@@ -24,7 +25,7 @@ const ResultRow = ({ label, value }: { label: string, value: React.ReactNode }) 
 
 export default function InstagramCheckerPage() {
     const [username, setUsername] = useState('');
-    const [result, setResult] = useState<any | null>(null);
+    const [result, setResult] = useState<InstagramApiResponse | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [useMock, setUseMock] = useState(false);
@@ -41,8 +42,12 @@ export default function InstagramCheckerPage() {
             const data = await response.json();
             if (!response.ok) throw new Error(data.message || "An error occurred.");
             setResult(data);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsLoading(false);
         }

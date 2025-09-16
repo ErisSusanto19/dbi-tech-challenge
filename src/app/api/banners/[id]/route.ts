@@ -93,12 +93,25 @@ export async function DELETE(request: Request, {params}: Params) {
     } catch (error) {
         console.error("Error deleting banner:", error)
 
-        if (error instanceof Error && 'http_code' in error) {
-            return NextResponse.json({ message: `Cloudinary error: ${error.message}` }, { status: (error as any).http_code });
+        if (
+            typeof error === 'object' && 
+            error !== null && 
+            'message' in error && 
+            'http_code' in error
+        ) {
+            const cloudinaryError = error as { message: string; http_code: number };
+            return NextResponse.json(
+                { message: `Cloudinary error: ${cloudinaryError.message}` },
+                { status: cloudinaryError.http_code }
+            );
+        }
+
+        if (error instanceof Error) {
+            return NextResponse.json({ message: `Failed to delete banner: ${error.message}` }, { status: 500 });
         }
 
         return NextResponse.json(
-            {message: "Failed to delete banner"},
+            {message: "An unknown error occurred"},
             {status: 500}
         )
     }
