@@ -83,7 +83,7 @@ export async function DELETE(request: Request, {params}: Params) {
             }
         }
 
-        const deletedBanner = await prisma.banner.delete({
+        await prisma.banner.delete({
             where: {
                 id
             }

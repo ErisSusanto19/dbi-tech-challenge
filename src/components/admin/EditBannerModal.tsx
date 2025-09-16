@@ -3,7 +3,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState, useEffect } from 'react';
 import { Banner } from '@prisma/client';
-import { X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { Image as ImageIcon, Loader2, X } from 'lucide-react';
 import SafeImage from '../ui/SafeImage';
 
 interface EditBannerModalProps {
@@ -82,7 +82,16 @@ export default function EditBannerModal({ isOpen, onClose, banner, onSave, isSub
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Panel className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                <button
+                                    type="button"
+                                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
+                                    onClick={onClose}
+                                    aria-label="Close"
+                                >
+                                    <X className="w-6 h-6" />
+                                </button>
+                                
                                 <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                                     Edit Banner
                                 </Dialog.Title>

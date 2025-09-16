@@ -123,8 +123,12 @@ const AdminBannersPage = () => {
 
             await fetchBanners()
             
-        } catch (error: any) {
-            setError(error.message)
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsSubmitting(false)
         }
@@ -144,8 +148,12 @@ const AdminBannersPage = () => {
 
             setBanners(currentBanners => currentBanners.filter(banner => bannerToDelete !== banner.id))
             closeDeleteModal();
-        } catch (error: any) {
-            setError(error)
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsDeleteSubmitting(false)
         }
@@ -195,8 +203,12 @@ const AdminBannersPage = () => {
             closeEditModal();
 
             await fetchBanners()
-        } catch (error: any) {
-            setError(error)
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setIsEditSubmitting(false);
         }
@@ -246,6 +258,7 @@ const AdminBannersPage = () => {
                             {selectedFile && (
                                 <div className="mt-4">
                                     <p className="text-sm font-medium text-gray-700">Image Preview:</p>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img 
                                         src={URL.createObjectURL(selectedFile)} 
                                         alt="Preview" 
