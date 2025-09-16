@@ -1,0 +1,18 @@
+{
+  "status": "OK",
+  "data": {
+    "id": "8668524989",
+    "username": "dapurbuzzer",
+    "full_name": "Dapur Buzzer Indonesia (Mock)",
+    "biography": "Ini adalah data tiruan (mock data) untuk tujuan demonstrasi.\nAPI asli telah mencapai batas kuotanya.",
+    "follower_count": 123456,
+    "following_count": 196,
+    "media_count": 6525,
+    "is_business": true,
+    "is_verified": false,
+    "is_private": false,
+    "is_spam_filtered": false,
+    "profile_pic_url": "https://app.dapurbuzzer.co.id/storage/avatar/PSSYrdgm1inQxO0lLBzE6jgZ9JMcur4GdNqWA25p.jpeg",
+    "external_url": "https://linktr.ee/example"
+  }
+}
