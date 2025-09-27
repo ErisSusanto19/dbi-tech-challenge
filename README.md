@@ -4,6 +4,11 @@ Proyek ini merupakan submission untuk tantangan teknis dari DBI. Aplikasi ini di
 
 ---
 
+## 🚀 Live Demo
+🔗 [dbi-tech-challenge.vercel.app](https://dbi-tech-challenge.vercel.app)
+
+---
+
 ## Fitur
 
 1.  **Redesign Halaman Utama:**
